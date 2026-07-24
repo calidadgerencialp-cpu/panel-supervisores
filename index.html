@@ -451,8 +451,14 @@ barsTipos+='</div>';
     +'<div class="kpi-row">'
     +'<div class="kpi-card red"><div class="kpi-label">Total desviaciones</div><div class="kpi-value">'+total+'</div></div>'
     +'<div class="kpi-card blue"><div class="kpi-label">Con desviaciones</div><div class="kpi-value">'+conDesv+'</div></div>'
-    +'<div class="kpi-card green"><div class="kpi-label">Sin desviaciones</div><div class="kpi-value">'+sinDesv+'</div></div>'
+    +'<div class="kpi-card green" onclick="toggleSinDesv()" style="cursor:pointer"><div class="kpi-label">Sin desviaciones</div><div class="kpi-value">'+sinDesv+'</div></div>'
     +'<div class="kpi-card amber"><div class="kpi-label">Promedio por local</div><div class="kpi-value">'+prom+'</div></div>'
+    +'</div>'
+    +'<div id="panel-sin-desv" style="display:none;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:16px;">'
+    +'<div style="font-weight:600;margin-bottom:8px;">Locales sin desviaciones ('+sinDesv+')</div>'
+    +desv.filter(function(d){return d.T===0;}).map(function(d){
+      return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-top:1px solid var(--border);font-size:13px;"><span>'+d.L+'</span><span style="color:var(--text-secondary)">'+fD(d.F)+'</span></div>';
+    }).join('')
     +'</div>'
     +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">'
     +'<div class="table-container"><div class="table-header"><div class="table-title">Top locales</div></div><div style="padding:12px 16px">'+barsTop5+'</div></div>'
